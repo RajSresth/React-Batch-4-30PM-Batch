@@ -1,16 +1,17 @@
-import React from 'react'
-import Child from "./Components/Props/Props_children/Child.jsx";
+import React, { Fragment } from 'react'
+import Child from './Components/Props/Props_children/Child.jsx';
 
 const App = () => {
   return (
-    <div>      
-          <Child user="props">
-              <h1>Learing React</h1>
-              <h2>Learning Props children</h2>  
-              <h3>Thankyou</h3>
-          </Child>
-    </div>
+    <Fragment key={}>
+      <Child user="props">
+        <h3>Hello World</h3>
+      </Child>
+    </Fragment>
   )
-}
+}      
+
+it is state full component
+it is state less component
 
 export default App
