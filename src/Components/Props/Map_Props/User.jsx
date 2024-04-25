@@ -1,17 +1,16 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+
 const User = (props) => {
     const {property}=props;
-    console.log(property)
   return (
-    <div>
-        <ul>
-            {property.map((val,i)=>{
-                return (
-                    <li key={i}>{val}</li>   
-                )
-            })}
-        </ul>
-    </div>
+    <Fragment>
+             {property.map(val=>(
+                <Fragment key={val.id}>
+                  <p>Id is: {val.id}</p>   
+                  <h1>Name: {val.userName}</h1>
+                </Fragment>
+            ))}
+    </Fragment>
   )
 }
 export default User
