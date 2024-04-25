@@ -10,6 +10,4 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background-color: black;     */
-    color: rgb(144, 141, 141);
 }
