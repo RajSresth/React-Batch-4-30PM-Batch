@@ -1,17 +1,13 @@
 import React, { Fragment } from 'react'
-import Child from './Components/Props/Props_children/Child.jsx';
+import User from './Components/Props/Map_Props/User'
 
 const App = () => {
+  let skills=['sql','Java','web']
   return (
-    <Fragment key={}>
-      <Child user="props">
-        <h3>Hello World</h3>
-      </Child>
+    <Fragment>
+      <User property={skills}></User>
     </Fragment>
   )
-}      
-
-it is state full component
-it is state less component
+}
 
 export default App
