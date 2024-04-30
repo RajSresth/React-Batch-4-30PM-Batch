@@ -1,33 +1,19 @@
 import React, { useState } from 'react'
+import Login from './Components/Props/stateHook/Login'
 import "./App.css";
+import Signup from './Components/Props/stateHook/Signup';
 
 const App = () => {
-  // useState Hook
-  const [count,setCount]=useState(0)
-
-  const increment=()=>{
-    setCount(()=>count+1)
-  }
-  const decrement=()=>{
-   if(count>0){
-    setCount(()=>count-1)
-   }
-  }
-  const reset=()=>{
-    setCount(()=>0)
-  }
-
+  const [userExist,setUserExist]=useState(true);
   return (
-    <div className='flex flex-col gap-8 h-screen justify-center items-center'>
-            <h1>Count: <span>{count}</span></h1>
-            <div className='flex gap-6'>
-              <button className='border-2 border-emerald-400 cursor-pointer\ py-1 px-4 rounded-md text-white' onClick={increment}>Increment</button>
+   <section>
+        <article className='bg-white shadow-lg shadow-gray-400 rounded-md w-[450px] h-[400px] py-3 px-8 flex flex-col gap-6'>
+        {userExist?<Login/>:<Signup/>}
 
-              <button className='border-2 border-red-400 cursor-pointer py-1 px-4 rounded-md text-white' onClick={decrement}>Decrement</button>
-
-              <button className='border-2 border-white cursor-pointer py-1 px-4 rounded-md text-white' onClick={reset}>Reset</button>
-            </div>
-    </div>
+        {userExist?<button className='px-4 py-1 bg-[#c10303] font-semibold  text-white rounded' onClick={()=>setUserExist(false)}>Signup</button>
+        :<button className='px-4 text-white py-1 bg-[#0866ff] font-semibold rounded' onClick={()=>setUserExist(true)}>Login</button>}              
+        </article>
+    </section>
   )
 }
 
