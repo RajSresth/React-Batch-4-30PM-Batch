@@ -1,20 +1,18 @@
 import React, { useState } from 'react'
-import Login from './Components/Props/stateHook/Login'
-import "./App.css";
-import Signup from './Components/Props/stateHook/Signup';
+import Nav from './Components/Props/stateHook/Nav'
+import Home from './Components/Props/stateHook/Home'
+import About from './Components/Props/stateHook/About'
 
 const App = () => {
-  const [userExist,setUserExist]=useState(true);
+  const [page,setPage]=useState(true)
   return (
-   <section>
-        <article className='bg-white shadow-lg shadow-gray-400 rounded-md w-[450px] h-[400px] py-3 px-8 flex flex-col gap-6'>
-        {userExist?<Login/>:<Signup/>}
+    <div>
+      <Nav></Nav>
+      {page?<Home/>:<About/>}     
 
-        {userExist?<button className='px-4 py-1 bg-[#c10303] font-semibold  text-white rounded' onClick={()=>setUserExist(false)}>Signup</button>
-        :<button className='px-4 text-white py-1 bg-[#0866ff] font-semibold rounded' onClick={()=>setUserExist(true)}>Login</button>}              
-        </article>
-    </section>
+      {page?<button className='px-4 py-1 bg-cyan-800 text-white' onClick={()=>setPage(false)}>About</button>:<button className='px-4 py-1 bg-cyan-800 text-white' onClick={()=>setPage(true)}>Home</button>}     
+      
+    </div>
   )
 }
-
 export default App
