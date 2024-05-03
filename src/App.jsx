@@ -1,56 +1,36 @@
-import React,{useState} from 'react'
-import "./App.css"
+import React from 'react'
+import { useState } from 'react'
 import { useEffect } from 'react'
+import "./App.css"
 
 const App = () => {
-  const [count,setCount]=useState(0)
-  const [cart,setCart]=useState(0)
+  const[data,setData]=useState([])
 
-    // componentDidMount
-    // useEffect(()=>{
-    //   console.log("componentDidMount")
-    // },[])
-
-
-  // component Did Update
-  // useEffect(()=>{
-  //     alert("Your Item is Added to cart")
-  // },[cart])
-
-  // component will unmount
   useEffect(()=>{
-
-    return ()=>{
-      console.log("Component will unmount")
-    }
-  })
-  
-
-  const handleIncrement=()=>{
-    setCount(()=>count+1)
-    
-  }
-  const handleDecrement=()=>{
-    if(count>0){
-      setCount(()=>count-1)
-    
-    }
-  }    
-  
-  const handleCart=()=>{
-    setCart(()=>cart+1)
-  }
+    (async function (){
+          let response=await fetch("https://fakestoreapi.com/products")
+          let result=await response.json()
+          setData(result)
+    })()
+  },[])
+ 
 
   return (
-    <div >
-        <h1 className='text-center mb-5'>Count: {count}</h1>
-        <button onClick={handleIncrement} className='py-1 px-4 bg-cyan-400 mx-3 rounded-md'>Increment</button>
-        <button onClick={handleDecrement} className='py-1 px-4 bg-purple-400 rounded-md'>Decrement</button>
-
-        <div className='flex flex-col items-center my-5'>
-              <h1>Cart: {cart}</h1>
-              <button onClick={handleCart} className='py-1 px-4 bg-purple-400 rounded-md'>Add to Cart</button>
-        </div> 
+    <div className='flex justify-center flex-wrap gap-x-[5rem] gap-y-[5rem] p-11'>
+       {
+              data.map((val,i)=>{
+                console.log(val)
+                return (
+                  <div key={i}>
+                       <div className='flex flex-col items-center py-8 w-[350px] bg-white shadow-md shadow-black '>
+                        <img src={val.image} className='w-[100px] h-[100px]'/>
+                          <h2 className='text-[2.2rem] font-extrabold my-4'>{val.category}</h2>
+                          <h3 className='text-[1.5rem]'><strong>Price: </strong>{val.price}</h3>
+                       </div>                        
+                  </div>
+                )
+              })
+       }
     </div>
   )
 }
