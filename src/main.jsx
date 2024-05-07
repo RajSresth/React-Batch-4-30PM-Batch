@@ -5,7 +5,7 @@ import './index.css'
 import Mycontext from './Mycontext.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <Mycontext>
+  <>
     <App />
-  </Mycontext>,
+  </>,
 )
